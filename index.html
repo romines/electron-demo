@@ -8,16 +8,18 @@
 <body>
   <div id="app">
     <div class="main">
-      <h2>Music Player</h2>
-      <button v-on:click="open" type="button" style="float: right;">Open Dir</button>
+      <div class="top">
+        <h2>Music Player</h2>
+        <img v-on:click="open" src="./images/folder.png" class="folder" />
+      </div>
       <ul>
         <li v-for="source in sources" v-on:click="select($index)" v-bind:class="{'selected': $index == selected}">{{source.name}}</li>
       </ul>
     </div>
     <div class="bottom">
       <div id="skip">
-        <img v-on:click="prev" src="./backward.png" alt="" />
-        <img v-on:click="next" src="./forward.png" alt="" />
+        <img v-on:click="prev" src="./images/backward.png" alt="" />
+        <img v-on:click="next" src="./images/forward.png" alt="" />
       </div>
       <audio v-bind:src="sources[selected].location" id="player" controls></audio>
     </div>
@@ -30,6 +32,9 @@
   const path = require('path');
   const dialog = require('remote').require('dialog');
   const mm = require('musicmetadata');
+
+  let player = document.getElementById('player');
+  player.autoplay = true;
 
   new Vue({
     el: '#app',
@@ -74,10 +79,10 @@
             });
           });
         });
+        player.addEventListener('ended', this.next, false);
       }
     }
   })
 
-  document.getElementById('player').autoplay = true;
 </script>
 </html>
