@@ -3,16 +3,71 @@
 <head>
   <meta charset="UTF-8">
   <title>Electron!</title>
+  <style media="screen">
+    html, body {
+      font-family: Helvetica;
+    }
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+  </style>
 </head>
 <body>
   <div id="app">
     <h2>Music Player</h2>
-    <audio src="./local.mp3" id="player" controls></audio>
+    <button v-on:click="open" type="button" style="float: right;">Open Dir</button>
+    <ul>
+      <li v-for="source in sources" v-on:click="select($index)">{{source.name}}</li>
+    </ul>
+    <audio v-bind:src="sources[selected].location" id="player" controls></audio>
   </div>
 </body>
 <script type="text/javascript">
+  'use strict';
   const fs = require('fs');
+  const Vue = require('vue');
+  const path = require('path');
+  const dialog = require('remote').require('dialog');
+  const mm = require('musicmetadata');
 
-  document.getElementById('player').autoplay = true;
+  new Vue({
+    el: '#app',
+    data: {
+      sources: [
+        {name: 'Mac Demarco - Song', location: './local.mp3'}
+      ],
+      selected: 0
+    },
+    methods: {
+      select: function (index) {
+        this.selected = index;
+      },
+      open: function () {
+        this.sources = [];
+        var localSrc = this.sources;
+        dialog.showOpenDialog({
+          title: 'Choose File',
+          properties: ['openDirectory']
+        }, function (loc) {
+          let location = loc[0];
+          fs.readdir(location, function (err, files) {
+            if (err) throw err;
+            files
+              .filter(function(file) { return file.substr(-4) === '.mp3'; })
+              .forEach( function (filename) {
+              let file = path.join(location, filename)
+              let parser = mm(fs.createReadStream(file), function (err, metadata) {
+                if (err) throw err;
+                localSrc.push({name: metadata.artist + ' - ' + metadata.title, location: file})
+              });
+            });
+          });
+        });
+      }
+    }
+  })
+
+  // document.getElementById('player').autoplay = true;
 </script>
 </html>
