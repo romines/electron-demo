@@ -1,0 +1,65 @@
+@import url(https://fonts.googleapis.com/css?family=Press+Start+2P);
+html, body, #app {
+  height: 100%;
+  width: 100%;
+  /*margin: 0;*/
+  font-family: 'Press Start 2P', cursive;
+  font-size: 3vh;
+  color: white;
+  background-color: rgb(0, 48, 255);
+  /*overflow: hidden;*/
+}
+h2 {
+  font-size: 1.3em;
+  margin: .3em 0;
+}
+div.main {
+  height: 100%;
+  margin-bottom: -60px;
+}
+.main:after {
+  height: 60px;
+  content: '';
+  display: block;
+}
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+li {
+  cursor: pointer;
+  border-bottom: 1px solid white;
+  padding: 15px 0 10px 10px;
+  margin: 0 -8px;
+}
+li:first-child {
+  border-top: 1px solid white;
+}
+.selected {
+  background-color: rgb(0, 236, 251);
+}
+.bottom {
+  width: 100%;
+  position: fixed;
+  background-color: rgb(60, 113, 162);
+  height: 60px;
+  margin-left: -8px;
+  display: flex;
+  align-items: center;
+}
+.skip {
+  width: 10%;
+}
+img {
+  height: 30px;
+}
+img:first-child {
+  margin-left: 9px;
+}
+img:last-child {
+  margin-right: 9px;
+}
+#player {
+  flex: 1;
+  margin-right: 9px;
+}

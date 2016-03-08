@@ -3,24 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <title>Electron!</title>
-  <style media="screen">
-    html, body {
-      font-family: Helvetica;
-    }
-    ul {
-      list-style-type: none;
-      padding-left: 0;
-    }
-  </style>
+  <link rel="stylesheet" href="./style.css" media="screen" title="no title" charset="utf-8">
 </head>
 <body>
   <div id="app">
-    <h2>Music Player</h2>
-    <button v-on:click="open" type="button" style="float: right;">Open Dir</button>
-    <ul>
-      <li v-for="source in sources" v-on:click="select($index)">{{source.name}}</li>
-    </ul>
-    <audio v-bind:src="sources[selected].location" id="player" controls></audio>
+    <div class="main">
+      <h2>Music Player</h2>
+      <button v-on:click="open" type="button" style="float: right;">Open Dir</button>
+      <ul>
+        <li v-for="source in sources" v-on:click="select($index)" v-bind:class="{'selected': $index == selected}">{{source.name}}</li>
+      </ul>
+    </div>
+    <div class="bottom">
+      <div id="skip">
+        <img v-on:click="prev" src="./backward.png" alt="" />
+        <img v-on:click="next" src="./forward.png" alt="" />
+      </div>
+      <audio v-bind:src="sources[selected].location" id="player" controls></audio>
+    </div>
   </div>
 </body>
 <script type="text/javascript">
@@ -42,6 +42,16 @@
     methods: {
       select: function (index) {
         this.selected = index;
+      },
+      next: function () {
+        if (this.selected < this.sources.length) {
+          this.selected += 1;
+        }
+      },
+      prev: function () {
+        if (this.selected > 0) {
+          this.selected -= 1;
+        }
       },
       open: function () {
         this.sources = [];
@@ -68,6 +78,6 @@
     }
   })
 
-  // document.getElementById('player').autoplay = true;
+  document.getElementById('player').autoplay = true;
 </script>
 </html>
