@@ -3,15 +3,19 @@ const electron = require('electron');
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 
-var mainWindow = null;
+// var mainWindow = null;
+//
+// app.on('ready', function () {
+//
+//   mainWindow = new BrowserWindow({
+//     width: 800,
+//     height: 600
+//   });
+//
+//   mainWindow.loadURL('file://' + __dirname + '/index.html');
+//
+// })
 
-app.on('ready', function () {
+const menubar = require('menubar');
 
-  mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600
-  });
-
-  mainWindow.loadURL('file://' + __dirname + '/index.html');
-
-})
+var mb = menubar();

@@ -5,12 +5,14 @@
   <title>Electron!</title>
 </head>
 <body>
-  <h1>Hello World!</h1>
-  <p id="test"></p>
+  <div id="app">
+    <h2>Music Player</h2>
+    <audio src="./local.mp3" id="player" controls></audio>
+  </div>
 </body>
 <script type="text/javascript">
   const fs = require('fs');
-  var text = fs.readFileSync('./local.txt');
-  document.getElementById('test').textContent = text;
+
+  document.getElementById('player').autoplay = true;
 </script>
 </html>
