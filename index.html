@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Electron!</title>
+</head>
+<body>
+  <h1>Hello World!</h1>
+  <p id="test"></p>
+</body>
+<script type="text/javascript">
+  const fs = require('fs');
+  var text = fs.readFileSync('./local.txt');
+  document.getElementById('test').textContent = text;
+</script>
+</html>
