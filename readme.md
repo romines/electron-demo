@@ -24,4 +24,4 @@ $ electron .
    [Vue.js]: <https://github.com/vuejs/vue>
    [musicmetadata]: <https://github.com/leetreveil/musicmetadata>
 
-Open a directory with mp3s to play audio locally.
+Look for the tiny cat in your menubar. Open a directory with mp3s to play audio locally!
