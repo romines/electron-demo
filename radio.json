@@ -1,0 +1,13 @@
+{"sources": [
+    {
+      "name":"KHOL",
+      "location": "http://peridot.streamguys.com:6010/live"
+    },{
+      "name": "WPR",
+      "location": "http://wprhqstream1.uwyo.edu:8000/wpr128.mp3"
+    },{
+      "name": "KEXP",
+      "location": "http://live-aacplus-64.kexp.org/kexp64.aac"
+    }
+  ]
+}

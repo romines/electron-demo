@@ -32,6 +32,7 @@
   const path = require('path');
   const dialog = require('remote').require('dialog');
   const mm = require('musicmetadata');
+  const radio = require('./radio.json').sources;
 
   let player = document.getElementById('player');
   player.autoplay = true;
@@ -39,9 +40,7 @@
   new Vue({
     el: '#app',
     data: {
-      sources: [
-        {name: 'Mac Demarco - Song', location: './sample/local.mp3'}
-      ],
+      sources: radio,
       selected: 0
     },
     methods: {

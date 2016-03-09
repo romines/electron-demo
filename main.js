@@ -1,6 +1,12 @@
 'use strict';
 const electron = require('electron');
 const app = electron.app;
+/*
+
+  To run as a normal app (useful for debugging), uncomment this stuff
+
+*/
+
 // const BrowserWindow = electron.BrowserWindow;
 //
 // var mainWindow = null;
@@ -15,6 +21,13 @@ const app = electron.app;
 //   mainWindow.loadURL('file://' + __dirname + '/index.html');
 //
 // });
+
+
+/*
+
+  And comment out the following
+
+*/
 
 const menubar = require('menubar');
 
