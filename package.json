@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "menubar": "^4.0.2",
     "musicmetadata": "^2.0.2",
     "vue": "^1.0.17"
   }

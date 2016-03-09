@@ -1,2 +1,4 @@
 node_modules
+sample
 **/*.mp3
+.DS_Store
